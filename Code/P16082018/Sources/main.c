@@ -25,13 +25,13 @@ void delay(void){
 }
 
 void rightSh(void){
-	leds=(1>>0);
+	leds=(1>>4);
 	delay();
-	leds=(1>>1);
+	leds=(1>>5);
 	delay();
-	leds=(1>>2);
+	leds=(1>>6);
 	delay();
-	leds=(1>>3);
+	leds=(1>>7);
 	delay();
 }
 
