@@ -1,0 +1,154 @@
+------------Modelo del Programador------------
+-Registros internos
+	-FF's
+		Señales de control mutuas:
+			Clk
+			Rst
+			Preset
+	
+		PISO	Parallel Input Serial Output
+		SIPO
+		PIPO
+		SISO
+	-Propósito general
+		R0-R12
+	-Propósito especial
+		R13-R14
+		-PC:Program Counter
+		 (IP) Instruction Pointer
+			Es la dirección de memoria donde está la sig instrucción a ejecutarse
+		-SP: Stack Pointer
+		-Flags<<ALU
+-Modos de direccionamiento
+	Diferentes maneras de llegar a un espacio de memoria
+	-Instrucciones con sus respectivos pnemónicos
+
+	>>Modo de direccionamiento de Registro
+		mov r2,r0
+
+		---mueve lo que hay en r0 a r2
+		mov	Rdst Rsrc		
+		|Cof of|0001|0000|
+			32bits
+
+	>>Modo de direccionamiento inmediato
+		mov r2,#5
+
+		---escribe un 5 en r2
+		mov#	Rdst inm
+		|Cof of|0010|0000 0101|
+			32bits
+
+	>>Modo de direccionamiento indirecto
+		ld r2,[r0]
+		---escribe lo que tenga escrita la memoria en la posición |r0|
+
+	>>Modo dir indexado
+		ld r2,[r0,#3]
+		---escribe en r2 lo que haya en la dirección de memoria |r0+3|
+
+	>>Modo doble indexado
+		ld r2,[r3,r4]
+		---escribe lo que hay en la dirección de memoria |r3+r4| en r2
+	
+	>>Modo de doble indexado con offset
+		ld r2,[r3,r4,5]
+		---escribe en r2 lo que hay en la dir |r3+r4+5|
+
+	>>Pre-indexado
+		<<Hace dos cosas>>		
+		Similar a ++i
+
+		ld r2,[r3,#6]!
+		---aumenta r3 en 6
+		---escribe en r2 lo que hay en la dirección de memoria |r3+6|
+
+	>>Post-indexado
+		<<Hace dos cosas>>		
+		Similar a i++
+
+		ld r2,[r3],#6
+		---escribe en r2 lo que hay en la dirección de memoria |r3|
+		---aumenta r3 en 6
+
+-Conjunto de instrucciones
+----------------------------------------------------------------------------------------------
+-------------------------------------------ARM------------------------------------------------
+instruction+s: las banderas se modifican
+instruction: las banderas no se modifican
+
+Load--> 	Rx<--Mem(y)
+		Dest,Source
+
+Store--> 	Mem(y)<--Rx
+		Source,Dest
+
+Word		32b
+HalfWord	16b
+Byte		 8b
+
+11 modos de direccionamiento
+	Direccionamiento de registros
+	Direccionamiento inmediato
+	Offset Addressing
+		-Immediate
+		-Register
+		-Scaled
+	Pre-index Addressing
+		-Immediate
+		-Register
+		-Scaled
+	Post-index Addressing
+		-Immediate
+		-Register
+		-Scaled
+
+---[Instruction Set]---
+	>>Data processing instructions
+		aritméticas
+		lógicas
+		Desplazamientos>>lógicos
+		multibly instr
+	>>Data transfer instructions
+		mov
+		ld
+		st
+		block transfer instructions
+	Branching instructions
+		bifurcación
+
+	
+	List:
+		Arithmetic operations:
+			---With carry
+			ADD	Sumar
+			SUB	Restar
+			     sub r2,r1,5
+			     ---r2<--r1-5
+			RSB	Restar en reversa
+			     sub r2,r1,5			     
+			     ---r2<--5-r1
+			---With carry
+			ADDC
+			SUBC
+			RSC
+		Bit-wise logical operations:
+			AND	Borrar bits
+			EOR	Complementar bits
+			     Dato	1001 1100
+			     XOR	1110 0000
+				       -----------
+					0111 1100
+			ORR
+			BIC	Borrar bits
+			
+
+----------------------------------------------------------------------------------------------
+En embebidos, se considera que una computadora es todo aquello que contenga un:
+	CPU
+	memoria
+	periféricos
+(RISK&SISK)
+Extención de signo
+Multiplicador de matrices
+Pnemónico
