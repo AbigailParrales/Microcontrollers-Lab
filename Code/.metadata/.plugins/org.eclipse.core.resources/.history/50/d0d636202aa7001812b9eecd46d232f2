@@ -1,0 +1,42 @@
+#include "derivative.h" /* include peripheral declarations */
+#define DELAY_T 100000
+#define TIMER_CNTS 1000
+
+unsigned char sw='0';
+unsigned long leds[]={1000,0100,0010,0001};
+//PTE 24-26
+void init(void){
+	//clks
+	SIM_SCGC5=0x00001001;		//Enable clock in page 323
+
+	//Page 288 -> PCR
+	//Page 244 -> 100 pins table
+	PORTD_PCR0=0x00000100;		//Select GPIO
+	PORTD_PCR1=0x00000100;
+	PORTD_PCR2=0x00000100;
+	PORTD_PCR3=0x00000100;
+
+	GPIOD_PDDR=0x0000000F;		//GPIO Output
+	//LPTMR
+	LPTMR0_PSR=5;
+
+	sw='0';
+}
+
+void delay(void){
+	LPTMR0_CMR=TIMER_CNTS;
+	LPTMR0_CSR=1;
+	do{}while(!(LPTMR0_CSR&(1<<7)));
+	LPTMR0_CSR|=(1<<7);
+}
+
+int main(void){
+	init();
+	while (true){
+		if(sw='0'){
+			
+		}
+	}
+	return 0;
+}
+
