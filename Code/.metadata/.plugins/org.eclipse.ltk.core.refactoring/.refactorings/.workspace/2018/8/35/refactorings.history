@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CrtexM4_C_ASM_1&apos; to &apos;CrtexM4_C_ASM_menor&apos;" description="Rename resource &apos;CrtexM4_C_ASM_1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/CrtexM4_C_ASM_1" name="CrtexM4_C_ASM_menor" stamp="1535404621057" updateReferences="true"/>
+</session>

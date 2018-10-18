@@ -152,3 +152,74 @@ En embebidos, se considera que una computadora es todo aquello que contenga un:
 Extención de signo
 Multiplicador de matrices
 Pnemónico
+
+----------------------------------------------------------------------------------------------27/08/2018
+Condition Code Suffixes
+Suffix 		Flags 				Meaning
+EQ 		Z = 1 				Equal
+NE 		Z = 0 				Not equal
+CS or HS 	C = 1 				Higher or same, unsigned =
+CC or LO 	C = 0 				Lower, unsigned <
+MI 		N = 1 				Negative
+PL 		N = 0 				Positive or zero
+VS 		V = 1 				Overflow
+VC 		V = 0 				No overflow
+HI 		C = 1 and Z = 0			Higher, unsigned >
+LS 		C = 0 or Z = 1 			Lower or same, unsigned =
+GE 		N = V 				Greater than or equal, signed =
+LT 		N != V 				Less than, signed <
+GT 		Z = 0 and N = V			Greater than, signed >
+LE 		Z = 1 and N != V		Less than or equal, signed =
+AL 		Can have any value Always. 	This is the default when no suffix is specified.
+
+
+---------loops in assembly---------------
+
+>>>for
+for(i=5;i<=20;i++){
+	...
+	...
+}
+
+		mov R1,#5
+for:		cmp R1,#20
+fin for:	bhi 			//Se pone el inverso que como se pondría en _C-like format_
+		...
+		...
+		add R1,#1
+		b for
+
+>>>do{}while();
+i=5;
+do{
+...
+...}
+
+while();
+
+		mov R1,#5
+do_while:	...
+		...
+		add R1,#1		/i++
+		cmp R1,#20
+		bls do_while		//Se pone el inverso que como se pondría en _C-like format_
+
+>>if
+if(a>b){
+	...
+	...
+}
+else{
+	...
+	...
+}
+
+	ld R0,(dir_a)
+	ld
+
+
+!"#$%&$#"
+
+bits a KB<K-bytes>
+16bits-->		1>K-bytes	6>2^n, donde n=6	
+		=>16 bits=64KB
